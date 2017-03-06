@@ -14,10 +14,11 @@ class ViewController: UIViewController {
     var testNum:Double = 0
     var testNum2:Double = 0
     let defaults = UserDefaults.standard
-
+    
     //labelを準備
     @IBOutlet weak var todayStudiedTime_label: UILabel!
     @IBOutlet weak var studiedTime_label: UILabel!
+    
     
     override func viewDidLoad() {
     super.viewDidLoad()
@@ -25,6 +26,12 @@ class ViewController: UIViewController {
     //一旦各labelに空文字を入力
     todayStudiedTime_label.text = ""
     studiedTime_label.text = ""
+        
+    //文字列が保存されている場合はラベルに文字列を設定する。
+    if defaults.string(forKey:"testNum2") != nil {
+    studiedTime_label.text = String(self.testNum2)
+        }
+        
     }
 
     //勉強した時間を入力し、その合計時間を出力する
