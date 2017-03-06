@@ -9,11 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
+   
 
+
+    
     var num:Double = 0
     var testNum:Double = 0
-    var testNum2:Double = 0
-    let defaults = UserDefaults.standard
+//    var testNum2:Double = 0
+//    let defaults = UserDefaults.standard
+    var testNum2 = UserDefaults.standard
+
     
     //labelを準備
     @IBOutlet weak var todayStudiedTime_label: UILabel!
@@ -25,12 +30,19 @@ class ViewController: UIViewController {
     
     //一旦各labelに空文字を入力
     todayStudiedTime_label.text = ""
-    studiedTime_label.text = ""
+        
+//    studiedTime_label.text = ""
         
     //文字列が保存されている場合はラベルに文字列を設定する。
-    if defaults.string(forKey:"testNum2") != nil {
-    studiedTime_label.text = String(self.testNum2)
-        }
+//    if testNum2.string(forKey:"testNum2") != nil {
+//    studiedTime_label.text = String(describing: self.testNum2)
+    
+//    if let testNum2 = testNum2.string(forKey: "testNum2") {
+//    studiedTime_label.text = String(testNum2)
+//        }
+
+    studiedTime_label.text = testNum2.string(forKey: "testNum2")
+       
         
     }
 
@@ -45,25 +57,20 @@ class ViewController: UIViewController {
         testNum = Double(Double(studiedTime_label.text!)!)
 
  print(testNum)
-     defaults.set(testNum, forKey:"Double")
-     defaults.synchronize()
-     testNum2 = defaults.double(forKey: "Double")
-print(testNum2)
+     testNum2.set(testNum, forKey:"testNum")
+     testNum2.synchronize()
+ print(testNum2)
+            
+//            if (testNum2.object(forKey: "Key") != nil) {
+//            print("データ有り") }
+print(UserDefaults.standard.dictionaryRepresentation())
+                
+            
+            
+    
          }
     }
 
- 
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 
     
