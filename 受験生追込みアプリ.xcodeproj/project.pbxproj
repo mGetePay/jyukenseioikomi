@@ -422,7 +422,7 @@
 				DEVELOPMENT_TEAM = RX78EZR565;
 				INFOPLIST_FILE = "受験生追込みアプリ/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.docomo.----------";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.docomo.jyukenseioikomi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -435,7 +435,7 @@
 				DEVELOPMENT_TEAM = RX78EZR565;
 				INFOPLIST_FILE = "受験生追込みアプリ/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.docomo.----------";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.docomo.jyukenseioikomi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -518,6 +518,7 @@
 				116B9DC41E630C9E00FDA8B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		116B9DC51E630C9E00FDA8B5 /* Build configuration list for PBXNativeTarget "受験生追込みアプリTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +527,7 @@
 				116B9DC71E630C9E00FDA8B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		116B9DC81E630C9E00FDA8B5 /* Build configuration list for PBXNativeTarget "受験生追込みアプリUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +536,7 @@
 				116B9DCA1E630C9E00FDA8B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
