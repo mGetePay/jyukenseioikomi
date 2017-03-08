@@ -12,7 +12,9 @@ class ViewController: UIViewController {
     
     //変数を準備し初期値を入力する
     var num:Double = 0
-    var testNum:Double = 0
+    var num2:Double = 0
+//   var testNum:Double = 0
+    //データを保存するインスタンス作成
     var testNum2 = UserDefaults.standard
     
     //labelを準備する
@@ -22,7 +24,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
     super.viewDidLoad()
     
-    //キー"testNum"にtestNum2の値(Double)を文字列（String）に変換して格納
+    //キー"testNum"にtestNum2の値(Double)を文字列（String）に変換して読み込み格納。
+    //読み込んだ値をstudiedTime_label.textに表示
     studiedTime_label.text = String(testNum2.double(forKey: "testNum"))
     }
 
@@ -36,21 +39,31 @@ class ViewController: UIViewController {
         if Double(todayStudiedTime_label.text!) != nil {
         num += Double(Double(todayStudiedTime_label.text!)!)
         
+        //testNum2（:Double）に数値ボタンの数値を加算
+        if Double(todayStudiedTime_label.text!) != nil {
+        num2 += Double(Double(todayStudiedTime_label.text!)!)
+            }
         //todayStudiedTime_labelにnum(:String)を表示
         todayStudiedTime_label.text = String( num)
 
         //StudiedTime_labelにnum(:String)を表示
-        studiedTime_label.text = String(num)
-        
-        testNum = Double(Double(studiedTime_label.text!)!)
- print(testNum)
-     testNum2.set(testNum, forKey:"testNum")
+            studiedTime_label.text = String(num2)
+
+//        testNum = Double(Double(studiedTime_label.text!)!)
+// print(testNum)
+//        studiedTime_label.text = String(testNum)
+     
+     //testNumの値をtestNum2として保存
+     testNum2.set(num2, forKey:"testNum")
+     //testNum2を同期
      testNum2.synchronize()
  print(testNum2)
             
   
          }
     }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
