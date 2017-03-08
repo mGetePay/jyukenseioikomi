@@ -16,17 +16,32 @@ class ViewController: UIViewController {
 //   var testNum:Double = 0
     //データを保存するインスタンス作成
     var testNum2 = UserDefaults.standard
+    var targetTime = UserDefaults.standard
     
     //labelを準備する
     @IBOutlet weak var todayStudiedTime_label: UILabel!
     @IBOutlet weak var studiedTime_label: UILabel!
+    
+    //初期値入力用フィールドを入力する
+    @IBOutlet weak var imputTarget: UITextField!
+    @IBOutlet weak var target: UILabel!
+    @IBAction func enter(_ sender: UIButton) {
+//    let target = Int(imputTarget.text!)
+    target.text = String(imputTarget.text!)
 
+    }
+
+    
     override func viewDidLoad() {
     super.viewDidLoad()
     
     //キー"testNum"にtestNum2の値(Double)を文字列（String）に変換して読み込み格納。
     //読み込んだ値をstudiedTime_label.textに表示
     studiedTime_label.text = String(testNum2.double(forKey: "testNum"))
+   
+//    if let targetText = targetTime.string(forKey: "targetText") {}
+    target.text = targetTime.string(forKey: "targetText")
+        
     }
 
     //勉強した時間を入力し、その合計時間を出力する
@@ -55,8 +70,11 @@ class ViewController: UIViewController {
      
      //testNumの値をtestNum2として保存
      testNum2.set(num2, forKey:"testNum")
+     targetTime.set(target.text, forKey:"targetText")
+     
      //testNum2を同期
      testNum2.synchronize()
+     targetTime.synchronize()
  print(testNum2)
             
   
