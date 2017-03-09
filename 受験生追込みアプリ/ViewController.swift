@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     //変数を準備し初期値を入力する
     var num:Double = 0
     var num2:Double = 0
-//   var testNum:Double = 0
+
     //データを保存するインスタンス作成
     var testNum2 = UserDefaults.standard
     var targetTime = UserDefaults.standard
@@ -21,27 +21,47 @@ class ViewController: UIViewController {
     //labelを準備する
     @IBOutlet weak var todayStudiedTime_label: UILabel!
     @IBOutlet weak var studiedTime_label: UILabel!
+    @IBOutlet weak var remainingTime: UILabel!
+    @IBOutlet weak var todayTargetTime: UILabel!
     
-    //初期値入力用フィールドを入力する
+    //目安勉強時間の入力・出力
     @IBOutlet weak var imputTarget: UITextField!
     @IBOutlet weak var target: UILabel!
     @IBAction func enter(_ sender: UIButton) {
-//    let target = Int(imputTarget.text!)
     target.text = String(imputTarget.text!)
-
     }
-
     
+    //試験日までの日数の入力・出力
+    @IBOutlet weak var imputTheDay: UITextField!
+    @IBOutlet weak var theDay: UILabel!
+    
+    //試験日までの日数が入力されると今日の勉強時間を計算
+    @IBAction func enterTheDay(_ sender: UIButton){
+    theDay.text = String(imputTheDay.text!)
+    todayTargetTime.text = String(Double(remainingTime.text!)!
+     / Double(theDay.text!)!)
+    }
+    
+    
+    //計算はoverridefunc内で実施
     override func viewDidLoad() {
     super.viewDidLoad()
-    
+        
+        
     //キー"testNum"にtestNum2の値(Double)を文字列（String）に変換して読み込み格納。
     //読み込んだ値をstudiedTime_label.textに表示
     studiedTime_label.text = String(testNum2.double(forKey: "testNum"))
    
-//    if let targetText = targetTime.string(forKey: "targetText") {}
-    target.text = targetTime.string(forKey: "targetText")
+    //目安勉強時間のLabelへ"targetText"に格納したtargetTimeを読み込む
+        target.text = targetTime.string(forKey: "targetText")
         
+    //残り勉強時間の計算
+    remainingTime.text = String(Double(target.text!)! - Double(studiedTime_label.text!)!)
+        
+
+
+
+     
     }
 
     //勉強した時間を入力し、その合計時間を出力する
@@ -64,10 +84,7 @@ class ViewController: UIViewController {
         //StudiedTime_labelにnum(:String)を表示
             studiedTime_label.text = String(num2)
 
-//        testNum = Double(Double(studiedTime_label.text!)!)
-// print(testNum)
-//        studiedTime_label.text = String(testNum)
-     
+            
      //testNumの値をtestNum2として保存
      testNum2.set(num2, forKey:"testNum")
      targetTime.set(target.text, forKey:"targetText")
