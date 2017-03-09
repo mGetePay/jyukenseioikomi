@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     //変数を準備し初期値を入力する
     var num:Double = 0
     var num2:Double = 0
-
+    var numx:Double = 0
+    
     //データを保存するインスタンス作成
     var testNum2 = UserDefaults.standard
     var targetTime = UserDefaults.standard
@@ -42,26 +43,21 @@ class ViewController: UIViewController {
      / Double(theDay.text!)!)
     }
     
-    
     //計算はoverridefunc内で実施
     override func viewDidLoad() {
     super.viewDidLoad()
         
-        
     //キー"testNum"にtestNum2の値(Double)を文字列（String）に変換して読み込み格納。
     //読み込んだ値をstudiedTime_label.textに表示
     studiedTime_label.text = String(testNum2.double(forKey: "testNum"))
-   
+
+
     //目安勉強時間のLabelへ"targetText"に格納したtargetTimeを読み込む
         target.text = targetTime.string(forKey: "targetText")
         
     //残り勉強時間の計算
-    remainingTime.text = String(Double(target.text!)! - Double(studiedTime_label.text!)!)
+   remainingTime.text = String(Double(target.text!)! - Double(studiedTime_label.text!)!)
         
-
-
-
-     
     }
 
     //勉強した時間を入力し、その合計時間を出力する
@@ -82,10 +78,10 @@ class ViewController: UIViewController {
         todayStudiedTime_label.text = String( num)
 
         //StudiedTime_labelにnum(:String)を表示
-            studiedTime_label.text = String(num2)
-
+        studiedTime_label.text = String(numx + num2)
             
-     //testNumの値をtestNum2として保存
+            
+     //num2をtestNum2として保存
      testNum2.set(num2, forKey:"testNum")
      targetTime.set(target.text, forKey:"targetText")
      
@@ -93,8 +89,6 @@ class ViewController: UIViewController {
      testNum2.synchronize()
      targetTime.synchronize()
  print(testNum2)
-            
-  
          }
     }
     
